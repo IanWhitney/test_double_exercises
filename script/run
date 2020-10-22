@@ -1,0 +1,1 @@
+docker run --rm -it -v "$PWD":/app -w /app rspec_koans rspec
