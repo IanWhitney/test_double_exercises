@@ -17,3 +17,9 @@ RSpec.configure do |config|
 
   config.order = :defined
 end
+
+class Object
+  def _placeholder
+    nil
+  end
+end
