@@ -23,3 +23,5 @@ class Object
     nil
   end
 end
+
+class PlaceholderError < StandardError; end
