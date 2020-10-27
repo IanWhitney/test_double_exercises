@@ -16,7 +16,7 @@ RSpec.describe "When testing a class" do
       describe Person do
         it "returns an instance of the described class by calling described_class.new()" do
           expect(subject).to be_instance_of(_placeholder), "Replace the _placeholder with Person"
-          # How colud you write this test to use the `described_class` helper?
+          # How could you write this test to use the `described_class` helper?
         end
       end
     end
@@ -32,7 +32,7 @@ RSpec.describe "When testing a class" do
   describe "test the class's methods by calling them directly" do
     describe Person do
       subject do
-        twenty_years_ago = Date.today - (365 * 20)
+        twenty_years_ago = Date.today - (365.25 * 20)
         person = described_class.new
         person.birthday = twenty_years_ago
         person
@@ -47,7 +47,7 @@ RSpec.describe "When testing a class" do
   describe "when testing methods that do not exist" do
     describe Person do
       it "will fail" do
-        expect { subject.minnesota }.to raise_error(PlaceholderError), "Update the PlaceHolderError with the type of error that is raised"
+        expect { subject.minnesota }.to raise_error(PlaceHolderError), "Update the PlaceHolderError with the type of error that is raised"
       end
     end
   end
