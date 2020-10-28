@@ -47,7 +47,7 @@ RSpec.describe "When testing a class" do
   describe "when testing methods that do not exist" do
     describe Person do
       it "will fail" do
-        expect { subject.minnesota }.to raise_error(PlaceHolderError), "Update the PlaceHolderError with the type of error that is raised"
+        expect { subject.minnesota }.to raise_error(PlaceholderError), "Update the PlaceHolderError with the type of error that is raised"
       end
     end
   end

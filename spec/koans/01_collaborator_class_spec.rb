@@ -20,7 +20,7 @@ RSpec.describe "When testing a collaborator" do
         it "and you can't use person methods that don't exist" do
           person = Person.new
 
-          expect{ person.minnesota }.to raise_error(PlaceHolderError)
+          expect{ person.minnesota }.to raise_error(PlaceholderError)
         end
       end
 
