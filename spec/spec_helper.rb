@@ -20,8 +20,30 @@ end
 
 class Object
   def _placeholder
-    nil
+    NullObject.new
+  end
+
+  def __(other)
+    false
   end
 end
 
 class PlaceholderError < StandardError; end
+
+# This is the "Black Hole" null object
+# From Avdi Grimm's book "Much Ado Abought Naught"
+# https://github.com/avdi/naught
+class NullObject < BasicObject
+  def method_missing(*)
+    self
+  end
+
+  def respond_to?(*)
+    true
+  end
+  def inspect
+    "<null>"
+  end
+  klass = self
+  define_method(:class) { klass }
+end
