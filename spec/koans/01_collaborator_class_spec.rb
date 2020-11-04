@@ -28,15 +28,15 @@ RSpec.describe "When testing a collaborator" do
         it "your tests fail when the collaborator changes" do
           # The new_behavior param changes the internals of the collaborator
           person = Person.new(new_behavior: true)
-          person.name = "Testo Testerface"
+          person.name = "Tester Testerface"
           person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          expect(subject.to_s).to eq("Hello, Testo Testerface (Wizened)"), "
+          expect(subject.to_s).to eq("Hello, Tester Testerface (Wizened)"), "
           Oh no!
           The behavior of Person has changed your test failed.
-          You expected 'Hello, Wizened Testo Testerface',
+          You expected 'Hello, Wizened Tester Testerface',
           but you got #{subject.to_s}.
           Update your test and wonder 'Why am I updating a Greeting test because Person changed?'"
         end
@@ -46,7 +46,7 @@ RSpec.describe "When testing a collaborator" do
           # And how much configures the class under test?
           # Reading this test which class seems most important?
           person = Person.new
-          person.name = "Testo Testerface"
+          person.name = "Tester Testerface"
           person.title = "Wizened"
 
           subject = described_class.new(person: person)
@@ -55,18 +55,18 @@ RSpec.describe "When testing a collaborator" do
           number_of_lines_configuring_greeting = 0
 
           expect(number_of_lines_configuring_person).to be > number_of_lines_configuring_greeting
-          expect(subject.to_s).to eq("Hello, Wizened Testo Testerface")
+          expect(subject.to_s).to eq("Hello, Wizened Tester Testerface")
         end
 
         it "and your tests are slow if your collaborator is slow" do
           # The slow_down param slows down your collaborator
           person = Person.new(slow_down: true)
-          person.name = "Testo Testerface"
+          person.name = "Tester Testerface"
           person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          expect(subject.to_s).to eq("Hello, Wizened Testo Testerface")
+          expect(subject.to_s).to eq("Hello, Wizened Tester Testerface")
         end
       end
     end

@@ -33,7 +33,7 @@ RSpec.describe "When testing a class" do
     describe Person do
       subject do
         person = described_class.new
-        person.name = "Tester Testerson"
+        person.name = "Tester Testerface"
         person.title = "Wizened"
         person.birthday = Date.today - (365.25 * 20) # 20 years ago
         person
