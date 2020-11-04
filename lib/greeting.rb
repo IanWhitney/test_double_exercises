@@ -4,11 +4,7 @@ class Greeting
   end
 
   def to_s
-    if person.birthday
-      "Hello, #{person.full_name}. You are #{person.age} years old!"
-    else
-      "Hello, #{person.full_name}"
-    end
+    "Hello, #{person.full_name}"
   end
 
   private
