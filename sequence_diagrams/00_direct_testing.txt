@@ -1,14 +1,14 @@
 title Direct Testing
 
+Test->Person: name=(x)
+Person->Person: @name=x
+Test->Person: title=(x)
+Person->Person: @title=x
 Test->Person: birthday=(x)
 Person->Person: @birthday=x
 Test->Person: birthday
 Person->Test: @birthday
 Test->Person: age
 Person->Test: result of age calc, using @birthday
-Test->Person: name=(x)
-Person->Person: @name=x
-Test->Person: title=(x)
-Person->Person: @title=x
-Test->Person: name
+Test->Person: full_name
 Person->Test: "@name (@title)"

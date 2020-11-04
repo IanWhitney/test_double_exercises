@@ -32,14 +32,19 @@ RSpec.describe "When testing a class" do
   describe "test the class's methods by calling them directly" do
     describe Person do
       subject do
-        twenty_years_ago = Date.today - (365.25 * 20)
         person = described_class.new
-        person.birthday = twenty_years_ago
+        person.name = "Tester Testerson"
+        person.title = "Wizened"
+        person.birthday = Date.today - (365.25 * 20) # 20 years ago
         person
       end
 
-      it "returns the age in whole years" do
-        expect(subject.age).to eq(_placeholder), "Replace the _placeholder with the value you expect the method to return"
+      it "requires no collaborators" do
+        expect(subject.birthday).to eq(_placeholder)
+        expect(subject.name).to eq(_placeholder)
+        expect(subject.title).to eq(_placeholder)
+        expect(subject.age).to eq(_placeholder)
+        expect(subject.full_name).to eq(_placeholder)
       end
     end
   end
