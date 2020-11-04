@@ -9,8 +9,8 @@ RSpec.describe "When testing a collaborator" do
       describe "there are benefits to setting up a Person instance directly" do
         it "it is not hard" do
           person = Person.new
-          person.name = "Tester Testerson"
-          person.title = "Doctor"
+          person.name = "Tester Testerface"
+          person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
@@ -28,15 +28,15 @@ RSpec.describe "When testing a collaborator" do
         it "your tests fail when the collaborator changes" do
           # The new_behavior param changes the internals of the collaborator
           person = Person.new(new_behavior: true)
-          person.name = "Testo Testerface"
-          person.title = "Lawyer"
+          person.name = "Tester Testerface"
+          person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          expect(subject.to_s).to eq("Hello, Lawyer Testo Testerface"), "
+          expect(subject.to_s).to eq("Hello, Tester Testerface (Wizened)"), "
           Oh no!
           The behavior of Person has changed your test failed.
-          You expected 'Hello, Lawyer Testo Testerface',
+          You expected 'Hello, Wizened Tester Testerface',
           but you got #{subject.to_s}.
           Update your test and wonder 'Why am I updating a Greeting test because Person changed?'"
         end
@@ -46,31 +46,27 @@ RSpec.describe "When testing a collaborator" do
           # And how much configures the class under test?
           # Reading this test which class seems most important?
           person = Person.new
-          person.birthday = Date.new(2004,2,29)
-          person.name = "Frederic Penzance"
-          person.title = "Pirate"
-          current_age = person.age
+          person.name = "Tester Testerface"
+          person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          number_of_lines_configuring_person = _placeholder
-          number_of_lines_configuring_greeting = _placeholder
+          number_of_lines_configuring_person = 0
+          number_of_lines_configuring_greeting = 0
 
           expect(number_of_lines_configuring_person).to be > number_of_lines_configuring_greeting
-          expect(subject.to_s).to eq("Hello, Pirate Frederic Penzance. You are #{current_age} years old!")
+          expect(subject.to_s).to eq("Hello, Wizened Tester Testerface")
         end
 
         it "and your tests are slow if your collaborator is slow" do
           # The slow_down param slows down your collaborator
           person = Person.new(slow_down: true)
-          person.birthday = Date.new(2004,2,29)
-          person.name = "Frederic Penzance"
-          person.title = "Pirate"
-          current_age = person.age
+          person.name = "Tester Testerface"
+          person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          expect(subject.to_s).to eq("Hello, Pirate Frederic Penzance. You are #{current_age} years old!")
+          expect(subject.to_s).to eq("Hello, Wizened Tester Testerface")
         end
       end
     end

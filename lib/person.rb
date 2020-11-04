@@ -7,6 +7,10 @@ class Person
   end
 
   def full_name
+    if slow_down?
+      sleep 1
+    end
+
     if new_behavior?
       "#{name} (#{title})"
     else
@@ -15,10 +19,6 @@ class Person
   end
 
   def age
-    if slow_down?
-      sleep 1
-    end
-
     now = Time.now.utc.to_date
     now.year - birthday.year - ((now.month > birthday.month || (now.month == birthday.month && now.day >= birthday.day)) ? 0 : 1)
   end
