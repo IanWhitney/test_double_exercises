@@ -1,0 +1,8 @@
+title Query Collaboration Testing
+
+Test->Greeting: new(person)
+Greeting->Greeting: @person=person
+Test->Greeting: to_s
+Greeting->Person: name
+Person->Greeting: name
+Greeting->Test: "Hello, #{name}"
