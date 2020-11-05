@@ -1,4 +1,4 @@
-# RSpec Koans
+# Test Double Exercises
 
 A set of exercises to explore Doubles, Stubs, and Mocks in RSpec.
 
