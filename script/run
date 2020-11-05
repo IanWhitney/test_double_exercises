@@ -1,1 +1,1 @@
-docker run --rm -it -v "$PWD":/app -w /app rspec_koans rspec --fail-fast
+docker run --rm -it -v "$PWD":/app -w /app test_double_exercises rspec --fail-fast
