@@ -1,3 +1,3 @@
-FROM ianwhitney/rspec_koans
+FROM ianwhitney/ruby_rspec
 
 COPY . .
