@@ -28,10 +28,10 @@ class Person
   attr_accessor :new_behavior, :slow_down
 
   def new_behavior?
-    new_behavior == true
+    ::Config.person.new_behavior?
   end
 
   def slow_down?
-    slow_down == true
+    ::Config.person.slow_down?
   end
 end
