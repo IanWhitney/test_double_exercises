@@ -46,13 +46,46 @@ RSpec.describe "When testing a collaborator" do
       end
 
       it "is unaffected by implementation changes in your collaborator" do
-        pending
-        fail
+        # This changes the behavior of the real person class
+        ::Config.person.new_behavior!
+
+        real_person = Person.new
+        real_person.name = "Tester Testerface"
+        real_person.title = "Wizened"
+        subject_with_real_person = described_class.new(person: real_person)
+
+        double_person = instance_double(Person, full_name: _placeholder)
+        subject_with_double_person = described_class.new(person: double_person)
+
+        strings_match = (subject_with_real_person.to_s == subject_with_double_person)
+        expect(strings_match).to be(_placeholder), "
+            Replace the _placeholder with true or false.
+            True if the strings match. False if they don't.
+            Remember what happened when the Person behavior changed in an earlier exercise?"
       end
 
       it "is unaffected by the speed of your collaborator" do
-        pending
-        fail
+        # This slows down the real person class
+        ::Config.person.slow_down!
+
+        start_of_real_person = Time.now
+        real_person = Person.new
+        real_person.name = "Tester Testerface"
+        real_person.title = "Wizened"
+        subject_with_real_person = described_class.new(person: real_person)
+        expect(subject_with_real_person.to_s).to eq "Hello, Wizened Tester Testerface"
+        end_of_real_person = Time.now
+        time_elapsed_testing_real_person = (end_of_real_person - start_of_real_person).to_f
+
+        start_of_double_person = Time.now
+        double_person = instance_double(Person, full_name: "Wizened Tester Testerface")
+        subject_with_double_person = described_class.new(person: double_person)
+        expect(subject_with_double_person.to_s).to eq "Hello, Wizened Tester Testerface"
+        end_of_double_person = Time.now
+        time_elapsed_testing_double_person = (end_of_double_person - start_of_double_person).to_f
+
+        # Replace __ with the correct operator, >, <, ==, etc
+        expect(time_elapsed_testing_double_person).to be __(time_elapsed_testing_real_person)
       end
 
       it "won't let you call methods that don't exist on the real object" do
