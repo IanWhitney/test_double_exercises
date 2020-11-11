@@ -16,6 +16,10 @@ RSpec.configure do |config|
   config.default_formatter = "doc"
 
   config.order = :defined
+
+  config.before(:each) do
+    ::Config.person.default!
+  end
 end
 
 class Object

@@ -1,4 +1,5 @@
 require_relative "../spec_helper"
+require 'config'
 require 'person'
 require 'greeting'
 require 'date'
@@ -26,14 +27,16 @@ RSpec.describe "When testing a collaborator" do
 
       describe "but there are downsides" do
         it "your tests fail when the collaborator changes" do
-          # The new_behavior param changes the internals of the collaborator
-          person = Person.new(new_behavior: true)
+          # This changes the behavior of your person collaborator
+          Config.person.new_behavior!
+
+          person = Person.new
           person.name = "Tester Testerface"
           person.title = "Wizened"
 
           subject = described_class.new(person: person)
 
-          expect(subject.to_s).to eq("Hello, Tester Testerface (Wizened)"), "
+          expect(subject.to_s).to eq("Hello, Wizened Tester Testerface"), "
           Oh no!
           The behavior of Person has changed your test failed.
           You expected 'Hello, Wizened Tester Testerface',
@@ -59,8 +62,10 @@ RSpec.describe "When testing a collaborator" do
         end
 
         it "and your tests are slow if your collaborator is slow" do
-          # The slow_down param slows down your collaborator
-          person = Person.new(slow_down: true)
+          # This slows down your person collaborator
+          Config.person.slow_down!
+
+          person = Person.new
           person.name = "Tester Testerface"
           person.title = "Wizened"
 
