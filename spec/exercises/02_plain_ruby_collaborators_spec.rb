@@ -51,10 +51,12 @@ RSpec.describe "When testing a collaborator" do
 
         it "is unaffected by implementation changes in your collaborator" do
           pending
+          fail
         end
 
         it "is unaffected by the speed of your collaborator" do
           pending
+          fail
         end
       end
 
