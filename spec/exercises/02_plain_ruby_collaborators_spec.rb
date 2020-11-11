@@ -5,14 +5,14 @@ require 'date'
 require 'ostruct'
 
 RSpec.describe "When testing a collaborator" do
-  describe "you can use plain Ruby objects as a stand-in" do
+  describe "you can use plain Ruby objects as a double" do
     describe Greeting, "using OpenStruct as a collaborator" do
-      describe "there are benefits to using a collaborator stand in" do
+      describe "there are benefits to using a collaborator double" do
         it "it is not hard" do
-          standin_person = OpenStruct.new
-          standin_person.full_name = "Wizened Tester Testerface"
+          double_person = OpenStruct.new
+          double_person.full_name = "Wizened Tester Testerface"
 
-          subject = described_class.new(person: standin_person)
+          subject = described_class.new(person: double_person)
 
           expect(subject.to_s).to eq(_placeholder), "Look at the Greeting class and replace _placeholder with what this test needs to pass"
         end
@@ -23,10 +23,10 @@ RSpec.describe "When testing a collaborator" do
           real_person.title = "Wizened"
           subject_with_real_person = described_class.new(person: real_person)
 
-          standin_person = OpenStruct.new(full_name: _placeholder)
-          subject_with_standin_person = described_class.new(person: standin_person)
+          double_person = OpenStruct.new(full_name: _placeholder)
+          subject_with_double_person = described_class.new(person: double_person)
 
-          expect(subject_with_real_person.to_s).to eq(subject_with_standin_person.to_s), "Update the `full_name` we set in our standin_person with what this test needs to pass"
+          expect(subject_with_real_person.to_s).to eq(subject_with_double_person.to_s), "Update the `full_name` we set in our double_person with what this test needs to pass"
         end
 
         it "requires less setup than using the real collaborator" do
@@ -35,18 +35,18 @@ RSpec.describe "When testing a collaborator" do
           real_person.title = "Wizened"
           subject_with_real_person = described_class.new(person: real_person)
 
-          standin_person = OpenStruct.new(full_name: "Wizened Tester Testerface")
-          subject_with_standin_person = described_class.new(person: standin_person)
+          double_person = OpenStruct.new(full_name: "Wizened Tester Testerface")
+          subject_with_double_person = described_class.new(person: double_person)
 
           # Replace 0 with the correct values
           number_of_lines_configuring_real_person = 0
-          number_of_lines_configuring_standin_person = 0
+          number_of_lines_configuring_double_person = 0
 
-          # this test shows that our Greeting works the same with a real person and a standin person
-          expect(subject_with_real_person.to_s).to eq(subject_with_standin_person.to_s)
+          # this test shows that our Greeting works the same with a real person and a double person
+          expect(subject_with_real_person.to_s).to eq(subject_with_double_person.to_s)
 
           # Replace __ with the correct operator, >, <, ==, etc
-          expect(number_of_lines_configuring_real_person).to be __(number_of_lines_configuring_standin_person)
+          expect(number_of_lines_configuring_real_person).to be __(number_of_lines_configuring_double_person)
         end
 
         it "is unaffected by implementation changes in your collaborator" do
@@ -60,10 +60,10 @@ RSpec.describe "When testing a collaborator" do
         end
       end
 
-      describe "and there are downsides to using a plain Ruby collaborator stand in" do
+      describe "and there are downsides to using a plain Ruby collaborator double" do
         it "lets you call methods that don't exist on the real object" do
           real_person = Person.new
-          standin_person = OpenStruct.new(minnesota: "ope!")
+          double_person = OpenStruct.new(minnesota: "ope!")
           #
           # Replace the _placeholders below to show which person raises an error
           # And which does not
@@ -86,7 +86,7 @@ RSpec.describe "When testing a collaborator" do
           end
 
           real_person = Person.new
-          standin_person = OpenStruct.new(full_name: "Wizened Tester Testerface")
+          double_person = OpenStruct.new(full_name: "Wizened Tester Testerface")
 
           # Replace the _placeholders below to show which person raises an error
           # And which does not
