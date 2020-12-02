@@ -1,5 +1,5 @@
 class Person
-  attr_accessor :birthday, :name, :title
+  attr_accessor :birthday, :name, :title, :email
 
   def initialize(new_behavior: false, slow_down: false)
     self.new_behavior = new_behavior
