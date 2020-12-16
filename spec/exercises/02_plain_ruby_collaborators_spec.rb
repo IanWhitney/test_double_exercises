@@ -116,7 +116,8 @@ RSpec.describe "When testing a collaborator" do
           # This bit of code removes the `full_name` from Person
           # And replaces it with a new method `new_full_name`
           class Person
-            undef :full_name
+            alias_method :removed_full_name, :full_name
+            remove_method :full_name
             def new_full_name
               "#{name} (#{title})"
             end
@@ -130,6 +131,13 @@ RSpec.describe "When testing a collaborator" do
           expect { described_class.new(person: _placeholder).to_s }.to raise_error(NoMethodError)
 
           expect { described_class.new(person: _placeholder).to_s }.not_to raise_error
+          # This bit of code restores the `full_name` method to Person
+          # And removes the methods we added temporarily
+          class Person
+            alias_method :full_name, :removed_full_name
+            remove_method :removed_full_name
+            remove_method :new_full_name
+          end
         end
       end
     end
