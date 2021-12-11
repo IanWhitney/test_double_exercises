@@ -1,7 +1,0 @@
-title Query and Command Collaboration Testing
-
-Test->Gifter: perform(person)
-Gifter->Person: birthday_on?(today)
-Person->Gifter: true
-Gifter->Mailer: create(person.email, "Happy Birthday")
-Mailer->Gifter: null

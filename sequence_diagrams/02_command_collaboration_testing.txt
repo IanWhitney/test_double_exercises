@@ -1,5 +1,0 @@
-title Command Collaboration Testing
-
-Test->SignUp: new(person)
-SignUp->Mailer: create(person.email)
-Mailer->SignUp: null
